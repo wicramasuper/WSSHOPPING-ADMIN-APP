@@ -2,6 +2,16 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+
+
+//middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+const morgan = require('morgan');
+const cors = require('cors');
+
+
+
 require('dotenv').config();
 
 const port = process.env.PORT || 9000;
