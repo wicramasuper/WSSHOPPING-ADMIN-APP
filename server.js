@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
+//validations
+const expressValidator = require('express-validator');
 
 
 //middleware
@@ -11,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(cors());
+app.use(expressValidator());
 
 
 //import the routes
