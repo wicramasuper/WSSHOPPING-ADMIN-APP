@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
     item_category: {
         type:'string',
         required: true,
-        
+        trim:true
 
     },
 
