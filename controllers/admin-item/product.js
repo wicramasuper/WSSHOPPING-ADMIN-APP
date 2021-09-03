@@ -70,3 +70,37 @@ exports.insert = (req,res) => {
 
      } )
 }
+
+
+//create productbyid middleware
+
+exports.productById = (req, res,next,id) => {
+    Product.findById(id).exec((err, product)=> {
+       if(err||!product){
+           return res.status(400).json({
+               error:"Product Not Found"
+           });
+       } 
+
+       //if product found base on id
+req.product = product;
+
+
+//perform this middleware and contine application
+next();
+
+    });
+}
+
+//request a single product using above middleware
+exports.readProduct=(req, res) => {
+
+    //this will make separate request to take photo from database   
+       
+   req.product.photo = undefined;
+   
+   return res.json(req.product);
+   
+   
+   }
+   
