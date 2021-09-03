@@ -1,8 +1,27 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
 require('dotenv').config();
+//validations
+const expressValidator = require('express-validator');
+
+
+//middleware
+const morgan = require('morgan');
+const cors = require('cors');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
+app.use(cors());
+app.use(expressValidator());
+
+
+//import the routes
+const productRoute = require('./routes/admin-item/product');
+
+
+//routes middlware
+app.use("/",productRoute);
 
 const port = process.env.PORT || 9000;
 
