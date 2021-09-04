@@ -26,7 +26,7 @@ exports.insert = (req, res) => {
 
 
         //validate all fields
-        const { item_code, item_name, item_category, item_type, item_quantity, item_weight, item_price, item_description } = fields;
+        const { item_code, item_name, item_category, item_type, item_quantity, item_weight, item_price, item_description,item_shipping } = fields;
 
         if (!item_code || !item_name || !item_category || !item_type || !item_quantity || !item_weight || !item_price || !item_description) {
             return res.status(400).json({

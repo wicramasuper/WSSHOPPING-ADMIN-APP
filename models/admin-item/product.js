@@ -58,6 +58,11 @@ const productSchema = new mongoose.Schema({
         trim:true,
         maxlength:2000
     },
+    item_shipping:{
+        
+        type:Boolean
+        
+    }
 
     
 
