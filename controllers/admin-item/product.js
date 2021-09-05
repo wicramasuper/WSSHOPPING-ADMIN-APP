@@ -11,6 +11,7 @@ const _ = require("lodash");
 const fs = require("fs");
 
 
+
 //insert new product
 exports.insert = (req, res) => {
 
@@ -28,7 +29,7 @@ exports.insert = (req, res) => {
         //validate all fields
         const { item_code, item_name, item_category, item_type, item_quantity, item_weight, item_price, item_description,item_shipping } = fields;
 
-        if (!item_code || !item_name || !item_category || !item_type || !item_quantity || !item_weight || !item_price || !item_description) {
+        if (!item_code || !item_name || !item_category  || !item_quantity || !item_weight || !item_price || !item_description) {
             return res.status(400).json({
                 error: 'all fields must be required'
             });
@@ -131,5 +132,24 @@ exports.removeProduct =(req, res)=>{
 
 }
 
+
+//fetch product list
+
+exports.listProduct =(req, res)=>{
+    //fetch 10 product by default
+    let limit = req.query.limit ? parseInt(req.query.limit):10; 
+
+    Product.find()
+    .select("-item_image")
+    .limit(limit)
+    .exec((err,data)=>{
+
+        if(err){
+            return res.status(400).json({error:"product Not Found"});
+        }
+
+        res.json(data);
+    });
+}
 
 
