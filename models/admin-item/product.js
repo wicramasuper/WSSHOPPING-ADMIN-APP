@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
     item_code:{
         type:'string',
         required: true,
-        maxLength: 4,
+        maxLength: 5,
         unique:true
     },
 
@@ -27,7 +27,6 @@ const productSchema = new mongoose.Schema({
 
     item_type: {
         type:'string',
-        required: true,
         default: 'Repack'
     },
 
