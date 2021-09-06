@@ -133,6 +133,67 @@ exports.removeProduct =(req, res)=>{
 }
 
 
+
+//update product
+
+//in a update method we going to take a existing product
+//instead of using new keywords 
+
+
+exports.updateProduct =(req, res)=>{
+
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.parse(req,(err,fields,files)=>{
+        if(err){
+            return res.status(400).json({
+                error:"image could not be uploaded"
+            });
+        }
+
+        //take existing product
+        //for that use extend from loadash library
+        let product = req.product;
+        //first arguement is request second one is update fields 
+        product =_.extend(product,fields);
+
+      
+
+        
+        if(files.item_image){
+            //console photo details like size 
+            //console.log("file photo",files.photo);
+
+            //check photo size and validate
+            //1mb=1000000
+
+            if(files.item_image.size>1000000){
+                return res.status(400).json({
+                    error: 'Photo size should be less than 1mb'
+                });
+            }
+
+
+
+
+            product.item_image.data = fs.readFileSync(files.item_image.path);
+            product.item_image.contentType = files.item_image.type;
+        }
+
+        product.save((err,resulst)=>{
+            if(err){
+                return res.status(400).json({err});
+            }
+            res.json(resulst);
+            
+        })
+
+    })
+
+}
+
+
+
 //fetch product list
 
 exports.listProduct =(req, res)=>{
