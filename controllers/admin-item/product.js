@@ -98,7 +98,7 @@ exports.readProduct = (req, res) => {
 
     //this will make separate request to take photo from database   
 
-    req.product.photo = undefined;
+    req.product.item_image = undefined;
 
     return res.json(req.product);
 }
@@ -127,8 +127,6 @@ exports.removeProduct =(req, res)=>{
         res.json({deleteProduct,message:"product deleted successfully"});
 
     })
-
-
 
 }
 
