@@ -17,11 +17,18 @@ app.use(expressValidator());
 
 
 //import the routes
-const productRoute = require('./routes/admin-item/product');
+//const productRoute = require('./routes/admin-item/product');
 
 
 //routes middlware
-app.use("/",productRoute);
+//app.use("/",productRoute);
+
+//IT20227036
+const advertisementRoutes = require('./routes/admin-offers/advertisement');
+app.use("/", advertisementRoutes);
+
+const promotionRoutes = require('./routes/admin-offers/promotion');
+app.use("/", promotionRoutes);
 
 const port = process.env.PORT || 9000;
 
