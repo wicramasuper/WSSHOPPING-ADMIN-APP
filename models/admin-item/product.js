@@ -7,8 +7,8 @@ const productSchema = new mongoose.Schema({
     item_code:{
         type:'string',
         required: true,
-        maxLength: 5,
-        unique:true
+        maxLength: 6,
+        
     },
 
     item_name: {

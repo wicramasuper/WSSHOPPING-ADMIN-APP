@@ -18,10 +18,12 @@ app.use(expressValidator());
 
 //import the routes
 const productRoute = require('./routes/admin-item/product');
+const categoryRoute = require('./routes/admin-item/category');
 
 
 //routes middlware
 app.use("/",productRoute);
+app.use("/",categoryRoute);
 
 const port = process.env.PORT || 9000;
 
