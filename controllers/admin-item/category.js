@@ -51,3 +51,19 @@ exports.list = (req, res) => {
         res.json(data);
     });
 };
+
+
+//remove category
+//delete product
+exports.removeCategory =(req, res)=>{
+    let category = req.category;
+
+    category.remove((err,deleteCategory)=>{
+
+        if(err) return res.status(400).json({err});
+
+        res.json({deleteCategory,message:"Category deleted successfully"});
+
+    })
+
+}
