@@ -61,7 +61,7 @@ exports.insert = (req, res) => {
         product.save((err, resulst) => {
             if (err) {
                 return res.status(400).json({
-                    err: errorHandler(err)
+                    error:err.message
                 });
             }
             res.json(resulst);
