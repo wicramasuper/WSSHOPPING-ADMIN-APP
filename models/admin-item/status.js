@@ -2,12 +2,25 @@ const mongoose = require('mongoose');
 
 const statusSchema = mongoose.Schema({
 
+    userid:{
+        type: 'string',
+        trim:true,
+        required:true
+    },
     username:{
         type: 'string',
         trim:true
     },
-    status: {
-        type: 'string',
+    cancel: {
+        type: Number,
+        required:true
+    },
+    progressing: {
+        type: Number,
+        required:true
+    },
+    completed: {
+        type: Number,
         required:true
     }
 
