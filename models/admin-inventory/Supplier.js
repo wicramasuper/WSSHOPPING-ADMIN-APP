@@ -21,8 +21,8 @@ const supplierSchema = new Schema({
     },
 
     phoneNumber: {
-        type: Array,
-        maxLength:10,
+        type: Number,
+        // maxLength:10,
         required: true
     },
     productType: {
@@ -51,7 +51,7 @@ const supplierSchema = new Schema({
     },
 
     date:{
-        type: Date,
+        type: String,
         default: new Date()
     },
 
