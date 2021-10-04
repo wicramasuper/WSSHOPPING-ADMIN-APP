@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
         type:'string',
         required: true,
         trim:true,
-        maxlength:200
+        maxlength:40
     },
 
     item_category: {
@@ -31,13 +31,13 @@ const productSchema = new mongoose.Schema({
     },
 
     item_quantity: {
-        type:'string',
+        type:Number,
         default: '0'
     },
 
     item_weight: {
         type:'string',
-        default:'kilo'
+        default:'.00'
     },
 
     item_image:{
@@ -47,7 +47,7 @@ const productSchema = new mongoose.Schema({
     },
 
     item_price:{
-        type:'string',
+        type:Number,
         default:'0'
     },
 

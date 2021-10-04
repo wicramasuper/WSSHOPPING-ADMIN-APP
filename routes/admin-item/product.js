@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {insert,productById,readProduct,getImage,removeProduct,listProduct,updateProduct} = require('../../controllers/admin-item/product');
+const {insert,productById,readProduct,getImage,removeProduct,listProduct,updateProduct,categoryStats} = require('../../controllers/admin-item/product');
 router.post('/admin/product/insert',insert);
 
 //route for get single product
@@ -20,5 +20,6 @@ router.get('/admin/products',listProduct);
 //update a single product
 router.put('/admin/product/:productId',updateProduct);
 
+router.get('/admin/categoryStats',categoryStats);
 
 module.exports = router;

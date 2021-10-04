@@ -11,7 +11,7 @@ exports.insertCategory=(req, res) =>{
         if(err){
             return res.status(400).json({
 
-                error:errorHandler(err)
+                error:"category Already Exist"
             });
 
         }

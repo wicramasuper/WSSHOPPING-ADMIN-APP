@@ -4,6 +4,7 @@ const Product = require("../../models/admin-item/product");
 //error handler in helper folder
 const { errorHandler } = require('../../helpers/admin-item');
 
+
 //formidable dependency for form handling
 const formidable = require("formidable");
 const _ = require("lodash");
@@ -212,3 +213,20 @@ exports.listProduct =(req, res)=>{
 }
 
 
+//fetch category list
+exports.categoryStats = (req, res) => {
+    Product.aggregate([{
+        "$group": {
+            "_id": "$item_category",
+            "count":{$sum:1}
+
+        }
+    }]).exec((err, data) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+        res.json(data);
+    });
+};
